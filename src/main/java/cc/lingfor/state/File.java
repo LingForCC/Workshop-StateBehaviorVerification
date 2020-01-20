@@ -2,16 +2,26 @@ package cc.lingfor.state;
 
 public class File {
 
-    private boolean _isUploaded;
+    protected boolean isUploaded;
+    protected boolean isExistingOnServer;
 
     public boolean isUploaded() {
-        return this._isUploaded;
+        return this.isUploaded;
+    }
+
+    public boolean isExistingOnServer() {
+        return isExistingOnServer;
+    }
+
+    public void init(String filePath, byte[] data) {
+        //check if the file exists on server
+
+        // set isExistingOnServer
     }
 
     public void upload() {
-        //check if the file is existing
-        //check if the file is already uploaded
         //upload the file
-        this._isUploaded = true;
+        
+        // set isUploaded
     }
 }

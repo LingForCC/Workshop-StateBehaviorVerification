@@ -3,12 +3,29 @@
  */
 package cc.lingfor;
 
+import cc.lingfor.behavior.FileServiceImpl;
+import cc.lingfor.behavior.UploaderBehavior;
+import cc.lingfor.state.File;
+import cc.lingfor.state.UploaderState;
+
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        String filePath = "filePath";
+        byte[] data = new byte[] {};
+
+        //Behavior
+        FileServiceImpl fileService = new FileServiceImpl();
+        UploaderBehavior uploaderBehavior = new UploaderBehavior(fileService);
+        uploaderBehavior.upload(filePath, data);
+
+
+        //State
+        File file = new File();
+        file.init(filePath, data);
+        UploaderState uploaderState = new UploaderState();
+        uploaderState.upload(file);
+        
     }
 }
