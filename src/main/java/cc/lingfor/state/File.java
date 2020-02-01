@@ -27,6 +27,10 @@ public class File {
     public void upload() {
         //upload the file
         
-        // set isUploaded
+        //set isUploaded
+
+        //set isExistingOnServer
+
+        //set isStorageFull
     }
 }

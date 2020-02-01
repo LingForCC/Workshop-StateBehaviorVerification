@@ -6,6 +6,6 @@ public interface FileService {
 
     public boolean isStorageFull();
 
-    public boolean upload(String filePath, byte[] data);
+    public void upload(String filePath, byte[] data);
 
 }
