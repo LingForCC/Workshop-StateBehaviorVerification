@@ -21,11 +21,12 @@ public class UploaderTest {
 
 
     @Test
-    public void shouldUploadFileIfFileNotExisted() {
+    public void shouldUploadFileIfFileNotExistedAndStorageNotFull() {
 
         byte[] data = new byte[] {};
         String filePath = "filePath";
         given(fileService.isFileExisted(filePath)).willReturn(false);
+        given(fileService.isStorageFull()).willReturn(false);
 
         uploader.upload(filePath, data);
 
@@ -33,11 +34,38 @@ public class UploaderTest {
     }
 
     @Test
-    public void shouldNotUploadFileIfFileExisted() {
+    public void shouldNotUploadFileIfFileExistedAndStorageNotFull() {
 
         byte[] data = new byte[] {};
         String filePath = "filePath";
         given(fileService.isFileExisted(filePath)).willReturn(true);
+        given(fileService.isStorageFull()).willReturn(false);
+
+        uploader.upload(filePath, data);
+
+        verify(fileService, times(0)).upload(filePath, data);
+    }
+
+    @Test
+    public void shouldNotUploadFileIfFileNotExistedAndStorageFull() {
+
+        byte[] data = new byte[] {};
+        String filePath = "filePath";
+        given(fileService.isFileExisted(filePath)).willReturn(false);
+        given(fileService.isStorageFull()).willReturn(true);
+
+        uploader.upload(filePath, data);
+
+        verify(fileService, times(0)).upload(filePath, data);
+    }
+
+    @Test
+    public void shouldNotUploadFileIfFileExistedAndStorageFull() {
+
+        byte[] data = new byte[] {};
+        String filePath = "filePath";
+        given(fileService.isFileExisted(filePath)).willReturn(true);
+        given(fileService.isStorageFull()).willReturn(true);
 
         uploader.upload(filePath, data);
 

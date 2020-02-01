@@ -10,43 +10,41 @@ import org.junit.Test;
 
 public class UploaderTest {
 
-    
-    private UploaderState uploader;
-
-    @Before
-    public void setUp() {
-        uploader = new UploaderState();
-    }
-
 
     @Test
-    public void shouldUploadFileIfFileNotExisted() {
+    public void shouldUploadFileIfFileNotExistedAndStorageNotFull() {
 
         FileStub file = new FileStub(false, false);
-
-        uploader.upload(file);
-        
-        assertEquals(true, file.isUploaded());
+        UploaderState uploader = new UploaderState(file);
+        uploader.upload();
+        assertEquals(true, uploader.isUploaded());
     }
 
     @Test
-    public void shouldNotUploadFileIfFileExisted() {
+    public void shouldNotUploadFileIfFileExistedAndStorageNotFull() {
 
         FileStub file = new FileStub(true, false);
-
-        uploader.upload(file);
+        UploaderState uploader = new UploaderState(file);
         
-        assertEquals(false, file.isUploaded());
+        assertEquals(false, uploader.isUploaded());
     }
 
-    // @Test
-    // public void shouldNotUploadFileIfFileUploaded() {
+    @Test
+    public void shouldNotUploadFileIfFileNotExistedAndStorageIsFull() {
 
-    //     FileStub file = new FileStub(true, true);
-
-    //     uploader.upload(file);
+        FileStub file = new FileStub(false, true);
+        UploaderState uploader = new UploaderState(file);
         
-    //     assertEquals(false, file.isUploaded());
-    // }
+        assertEquals(false, uploader.isUploaded());
+    }
+
+    @Test
+    public void shouldNotUploadFileIfFileExistedAndStorageIsFull() {
+
+        FileStub file = new FileStub(true, true);
+        UploaderState uploader = new UploaderState(file);
+        
+        assertEquals(false, uploader.isUploaded());
+    }
 
 }

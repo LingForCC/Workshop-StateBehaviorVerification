@@ -24,8 +24,8 @@ public class App {
         //State
         File file = new File();
         file.init(filePath, data);
-        UploaderState uploaderState = new UploaderState();
-        uploaderState.upload(file);
+        UploaderState uploaderState = new UploaderState(file);
+        uploaderState.upload();
         
     }
 }

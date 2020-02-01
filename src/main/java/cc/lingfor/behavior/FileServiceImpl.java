@@ -9,10 +9,13 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
+    public boolean isStorageFull() {
+        return false;
+    }
+
+    @Override
     public boolean upload(String filePath, byte[] data) {
         //do upload
         return true;
     }
-
-    
 }

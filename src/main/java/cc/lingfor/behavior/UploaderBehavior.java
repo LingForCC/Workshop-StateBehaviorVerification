@@ -9,7 +9,7 @@ public class UploaderBehavior {
     }
 
     public void upload(String filePath, byte[] data){
-        if(!this.fileService.isFileExisted(filePath)) {
+        if(!this.fileService.isFileExisted(filePath) && !this.fileService.isStorageFull()) {
             this.fileService.upload(filePath, data);
         }
     }

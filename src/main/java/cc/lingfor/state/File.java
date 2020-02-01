@@ -4,6 +4,7 @@ public class File {
 
     protected boolean isUploaded;
     protected boolean isExistingOnServer;
+    protected boolean isStorageFull;
 
     public boolean isUploaded() {
         return this.isUploaded;
@@ -11,6 +12,10 @@ public class File {
 
     public boolean isExistingOnServer() {
         return isExistingOnServer;
+    }
+
+    public boolean isStorageFull() {
+        return isStorageFull;
     }
 
     public void init(String filePath, byte[] data) {

@@ -2,9 +2,9 @@ package cc.lingfor.state;
 
 public class FileStub extends File {
 
-    public FileStub(boolean isExistingOnServer, boolean isUploaded) {
+    public FileStub(boolean isExistingOnServer, boolean isStorageFull) {
         this.isExistingOnServer = isExistingOnServer;
-        this.isUploaded = isUploaded;
+        this.isStorageFull = isStorageFull;
     }
 
     @Override
