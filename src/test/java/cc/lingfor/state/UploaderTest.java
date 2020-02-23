@@ -25,7 +25,7 @@ public class UploaderTest {
 
         FileStub file = new FileStub(true, false);
         UploaderState uploader = new UploaderState(file);
-        
+        uploader.upload();
         assertEquals(false, uploader.isUploaded());
     }
 
@@ -34,7 +34,7 @@ public class UploaderTest {
 
         FileStub file = new FileStub(false, true);
         UploaderState uploader = new UploaderState(file);
-        
+        uploader.upload();
         assertEquals(false, uploader.isUploaded());
     }
 
@@ -43,7 +43,7 @@ public class UploaderTest {
 
         FileStub file = new FileStub(true, true);
         UploaderState uploader = new UploaderState(file);
-        
+        uploader.upload();
         assertEquals(false, uploader.isUploaded());
     }
 
